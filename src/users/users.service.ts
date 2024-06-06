@@ -27,4 +27,25 @@ export class UsersService {
   getAllUsers(): User[] {
     return this.users;
   }
+
+  getUserById(id: number): User | undefined {
+    return this.users.find((user) => user.id === id);
+  }
+
+  updateUser(
+    id: number,
+    username: string,
+    experience: number,
+    ability: number,
+    gold: number,
+  ): User | undefined {
+    const user = this.users.find((user) => user.id === id);
+    if (user) {
+      user.username = username;
+      user.experience = experience;
+      user.ability = ability;
+      user.gold = gold;
+    }
+    return user;
+  }
 }
